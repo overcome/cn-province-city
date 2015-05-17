@@ -23,7 +23,17 @@ function fetch(){
 	
 	var url = 'http://www.ccb.com/cn/OtherResource/bankroll/html/code_help.html';
 	var deferred = Q.defer();
-
+	var taiwan = '台湾省';
+	var taiwanCity = ['新北市','台北市','台中市','台南市','高雄市','基隆市','嘉义市','屏东市',
+					  '台北县板桥市','三重市','中和市','永和市','新庄市','新店市','土城市',
+					  '芦洲市','树林市','汐止市','台中县丰原市','大里市','太平市','台南县新营市',
+					  '永康市','高雄县凤山市'];
+	var xianggang = '香港特别行政区';
+	var xianggangCity = ['中西区','东区','南区','湾仔区','九龙城区','观塘区','深水埗区',
+						 '黄大仙区','油尖旺区','离岛区','葵青区','北区','西贡区','沙田区',
+						 '大埔区','荃湾区','屯门区','元朗区'];
+	var aomen = '澳门特别行政区';
+	var aomenCity = '澳门市';
 	superagent.get(url)
 		.end(function(err,data){
 			if(err){
@@ -45,8 +55,27 @@ function fetch(){
 							city:temp.slice(4)
 						});	
 					}
+
 				});
 			});
+
+			for(var i = 0;i<taiwanCity.length;i++){
+				result.push({
+					province:taiwan,
+					city:taiwanCity[i]
+				});
+			}
+
+			for(var i = 0;i<xianggangCity.length;i++){
+				result.push({
+					province:xianggang,
+					city:xianggangCity[i]
+				});
+			}
+			result.push({
+				province:aomen,
+				city:aomenCity
+			})
 			deferred.resolve(result);
 		});
 	
@@ -99,18 +128,14 @@ module.exports.getProvinceName = function(path){
 		return cache;
 	}else{										// no cached province name
 		var data = JSON.parse(fse.readJsonSync(path));
-		var result = [];
+		cache.push(data[0].province);
 
-		if(result){
-			for(var i = 0;i<data.length-1;i++){
-				if(data[i].province !== data[i+1].province){
-					result.push(data[i+1].province);
-				}
+		for(var i = 0;i<data.length-1;i++){
+			if(data[i].province !== data[i+1].province){
+				cache.push(data[i+1].province);
 			}
-		}else{
-			result.push(data[0].province);
 		}
-		cache = result.sort();
+		cache = cache.sort();
 		return cache;
 	}
 	
@@ -122,14 +147,14 @@ module.exports.getProvinceName = function(path){
  * @param  {Number} number [number of province in map]
  * @return {Array}           [array of city]
  */
-module.exports.getCityNameByProvince = function(path,number){
+module.exports.getCityNameByProvince = function(path,index){
 	
 	var data = JSON.parse(fse.readJsonSync(path));
 	var result = [];
-	
+	var index = index - 1;
 	if(cache && cache.length){                  // cached province name
 		for(var i = 0;i<data.length;i++){
-			if(data[i].province == cache[number]){
+			if(data[i].province == cache[index]){
 				result.push(data[i].city);		
 			}
 		}
@@ -147,7 +172,7 @@ module.exports.getCityNameByProvince = function(path,number){
 		cache = result.sort();
 		result = [];
 		for(var i = 0;i<data.length;i++){
-			if(data[i].province == cache[number]){
+			if(data[i].province == cache[index]){
 				result.push(data[i].city);		
 			}
 		}
