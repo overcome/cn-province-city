@@ -1,9 +1,10 @@
 {
   "name": "provincecityinchina",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "getting and formatting chinese provinces and cities ",
   "main": "index.js",
   "scripts": {
+    "save": "node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   "homepage": "https://github.com/qianjiahao/ProvinceCityInChina",
   "dependencies": {
     "cheerio": "0.19.0",
+    "commander": "^2.8.1",
     "fs-extra": "0.18.3",
     "q": "1.4.0",
     "superagent": "1.2.0"
