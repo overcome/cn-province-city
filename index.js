@@ -6,14 +6,9 @@ var cheerio = require('cheerio');
 var fse = require('fs-extra');
 
 /**
- * map of province
+ * cache of provinces name
  * @type {Array}
  */
-var map =['上海市','云南省','内蒙古','北京市','吉林省','四川省','天津市','宁夏','安徽省',
-		  '山东省','山西省','广东省','广西','新疆','江苏省','江西省','河北省','河南省',
-		  '浙江省','海南省','湖北省','湖南省','甘肃省','福建省','西藏','贵州省','辽宁省',
-		  '重庆市','陕西省','青海省','黑龙江省' ]; 
-
 var cache = [];
 /**
  * fetch data from webpage
@@ -75,7 +70,7 @@ function fetch(){
 			result.push({
 				province:aomen,
 				city:aomenCity
-			})
+			});
 			deferred.resolve(result);
 		});
 	
@@ -106,7 +101,7 @@ module.exports.save = function(path,hint){
 			}
 			console.log(err);
 		});
-}
+};
 
 /**
  * get all data from json file
@@ -115,7 +110,7 @@ module.exports.save = function(path,hint){
  */
 module.exports.getAll = function(path){
 	return JSON.parse(fse.readJsonSync(path));
-}
+};
 
 /**
  * get province name
@@ -139,7 +134,7 @@ module.exports.getProvinceName = function(path){
 		return cache;
 	}
 	
-}
+};
 
 /**
  * get city name by province number
@@ -178,7 +173,7 @@ module.exports.getCityNameByProvince = function(path,index){
 		}
 		return result;
 	}
-}
+};
 
 
 
