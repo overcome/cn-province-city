@@ -1,29 +1,29 @@
 # ProvinceCityInChina
 Geting and formatting chinese provinces and cities
 
-##一个小功能，用来获取中国的省和市
+## 一个小功能，用来获取中国的省和市
 
-##数据来自[中国地区代码表](http://www.ccb.com/cn/OtherResource/bankroll/html/code_help.html)
 
-##Installation
+
+## Installation
 
     git clone git@github.com:qianjiahao/ProvinceCityInChina.git
 
-##Usage
+## Usage
 
     var pc = require('./index.js');
     
-##Methonds
+## Methonds
 
-    save()
-    getAll()
-    getProvinceName()
-    getCityNameByProvince()
+ - save
+ - getAll
+ - getProvinceName
+ - getCityNameByProvince
     
 
-##Specific
+## Specific
 
-####save(path[,hint])
+#### save(path[,hint])
 specific the file saved path,choose if you don't need hint 
 
     pc.save('./data.json');
@@ -31,9 +31,9 @@ or
 
     pc.save('./data.json',false);
 
-**please execute the save method first~**
+**save method will create a data file as your specific path,please execute the save method first~**
 
-####getAll(path)
+#### getAll(path)
 get all data from saved data file
 
     pc.getAll('data.json');
@@ -43,7 +43,7 @@ get province name from saved data file
 
     pc.getProvinceName('data.json');
 
-####getCityNameByProvince(path,index)
+#### getCityNameByProvince(path,index)
 get city name by province index from saved data file,this is province map:
 
     pc.getCityNameByProvince('data.json',1)               // get "shanghai's city"
@@ -69,3 +69,5 @@ get city name by province index from saved data file,this is province map:
     //
      '陕西省','青海省','香港特别行政区','黑龙江省' ] 
     // 31      32          33           34
+
+### 数据来自[中国地区代码表](http://www.ccb.com/cn/OtherResource/bankroll/html/code_help.html)
