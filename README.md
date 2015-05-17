@@ -1,4 +1,4 @@
-# ProvinceCityInChina
+# cn-province-city
 Geting and formatting chinese provinces and cities
 
 ## 一个小功能，用来获取中国的省和市
@@ -6,12 +6,12 @@ Geting and formatting chinese provinces and cities
 
 ## Installation
 
-    npm install provincecityinchina 
+    npm install cn-province-city 
 
 
 ## Usage
 
-    var china = require('provincecityinchina');
+    var china = require('cn-province-city');
  
 ## Help
 
