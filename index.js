@@ -17,8 +17,8 @@ if(process.argv[2] === '-h' || process.argv[2] === '--help'){
 	console.log(' ');
 	console.log('  command : ');
 	console.log(' ');
-	console.log('	-s , --save [path]','	save data into file');
-	console.log('	-h , --help       ','	ask for help');
+	console.log('	npm run save [path]','	save data into file');
+	console.log('	npm run help       ','	ask for help');
 	console.log(' ')
 }
 /**

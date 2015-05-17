@@ -13,31 +13,37 @@ Geting and formatting chinese provinces and cities
 
     var china = require('cn-province-city');
  
-## Help
-
-	node your-script.js -h
-
-or
-	
-	node your-script.js --help
 
 ## Config
 
-    node your-script.js -s data-file-path
-    
-or
+add two script into your project's package.json:
 
-    node your-script.js --save data-file-path
+在你的当前项目的package.json文件中加入两条脚本命令
 
-example :
+	"scripts": {
+    	"save":"node node_modules/cn-province-city/index.js -s",
+		"help":"node node_modules/cn-province-city/index.js -h"
+  	},
 
-	node index.js -s data/data.txt
+## Run
 
-or 
+run script for saving data:
 
-	node index.js -s data.json
+运行命令，获取数据，路径、文件名可以自定义
 
-在你的脚本文件中引入模块后，请立刻使用此命令执行你的脚本文件，创建数据文件，数据文件名、路径自定义
+	npm run save [path]
+
+example:
+
+	npm run save data/data.json
+
+run script for helping:
+
+运行命令，获取帮助信息
+
+	npm run help
+
+
 
 ## Methonds
 
