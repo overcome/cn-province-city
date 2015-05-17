@@ -7,11 +7,11 @@ Geting and formatting chinese provinces and cities
 
 ## Installation
 
-    git clone git@github.com:qianjiahao/ProvinceCityInChina.git
+    npm install provincecityinchina 
 
 ## Usage
 
-    var pc = require('./index.js');
+    var pc = require('provincecityinchina');
     
 ## Methonds
 
@@ -25,6 +25,7 @@ Geting and formatting chinese provinces and cities
 
 #### save(path[,hint])
 specific the file saved path,choose if you don't need hint 
+输入具体的保存文件路径，可选的打开提示或关闭提示
 
     pc.save('./data.json');
 or
@@ -35,16 +36,19 @@ or
 
 #### getAll(path)
 get all data from saved data file
+从数据文件中获取所有信息
 
     pc.getAll('data.json');
 
-####getProvinceName(path)
+#### getProvinceName(path)
 get province name from saved data file
+从数据文件中获取中国的34个省、市、直辖市、特别行政区
 
     pc.getProvinceName('data.json');
 
 #### getCityNameByProvince(path,index)
 get city name by province index from saved data file,this is province map:
+从数据文件中获取具体的某个省、市、直辖市、特别行政区的市或县，通过如下编号获取：
 
     pc.getCityNameByProvince('data.json',1)               // get "shanghai's city"
 
