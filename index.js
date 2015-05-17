@@ -1,21 +1,15 @@
-#!/usr/bin/env node
 'use strict';
 
 var Q = require('q');
 var superagent = require('superagent');
 var cheerio = require('cheerio');
 var fse = require('fs-extra');
-var program = require('commander')
 
 
-program
-	.version('1.0.0')
-	.option('-s,--save','save data into file')
-	.parse(process.argv);
-
-if(program.save){
+if(process.argv[2] == '-s' || '--save'){
 	save(process.argv[3]);
 }
+
 
 /**
  * cache of provinces name
