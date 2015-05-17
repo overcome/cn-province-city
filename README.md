@@ -4,18 +4,27 @@ Geting and formatting chinese provinces and cities
 ## 一个小功能，用来获取中国的省和市
 
 
-
 ## Installation
 
     npm install provincecityinchina 
 
+
 ## Usage
 
     var china = require('provincecityinchina');
+ 
+## Config
+
+    node your-script.js -s data-file-path.json
     
+or
+
+    node your-script.js --save data-file-path.js
+    
+在你的脚本文件中引入模块后，使用此命令执行你的脚本文件，创建数据文件，数据文件自定义名字，以.json后缀结尾
+
 ## Methonds
 
- - save
  - getAll
  - getProvinceName
  - getCityNameByProvince
@@ -23,17 +32,6 @@ Geting and formatting chinese provinces and cities
 
 ## Specific
 
-#### save(path[,hint])
-specific the file saved path,choose if you don't need hint 
-
-输入具体的保存文件路径，可选的打开提示或关闭提示
-
-    china.save('./data.json');
-or
-
-    china.save('./data.json',false);
-
-**save method will create a data file as your specific path,please execute the save method first~**
 
 #### getAll(path)
 get all data from saved data file
