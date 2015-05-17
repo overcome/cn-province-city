@@ -23,17 +23,31 @@ Geting and formatting chinese provinces and cities
 
 ##Specific
 
-###save(path[,hint])
+####save(path[,hint])
 specific the file saved path,choose if you don't need hint 
 
-###getAll(path)
+        pc.save('./data.json');
+or
+
+        pc.save('./data.json',false);
+
+**please execute the save method first~**
+
+####getAll(path)
 get all data from saved data file
 
-###getProvinceName(path)
+        pc.getAll('data.json');
+
+####getProvinceName(path)
 get province name from saved data file
 
-###getCityNameByProvince(path,index)
+        pc.getProvinceName('data.json');
+
+####getCityNameByProvince(path,index)
 get city name by province index from saved data file,this is province map:
+
+        pc.getCityNameByProvince('data.json',1)               // get "shanghai's city"
+
 
     ['上海市','云南省','内蒙古','北京市','台湾省',            // 1  - 5
     '吉林省','四川省','天津市','宁夏','安徽省',               // 6  - 10
