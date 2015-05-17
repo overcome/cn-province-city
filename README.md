@@ -11,7 +11,7 @@ Geting and formatting chinese provinces and cities
 
 ## Usage
 
-    var pc = require('provincecityinchina');
+    var china = require('provincecityinchina');
     
 ## Methonds
 
@@ -28,10 +28,10 @@ specific the file saved path,choose if you don't need hint
 
 输入具体的保存文件路径，可选的打开提示或关闭提示
 
-    pc.save('./data.json');
+    china.save('./data.json');
 or
 
-    pc.save('./data.json',false);
+    china.save('./data.json',false);
 
 **save method will create a data file as your specific path,please execute the save method first~**
 
@@ -40,21 +40,21 @@ get all data from saved data file
 
 从数据文件中获取所有信息
 
-    pc.getAll('data.json');
+    china.getAll('data.json');
 
 #### getProvinceName(path)
 get province name from saved data file
 
 从数据文件中获取中国的34个省、市、直辖市、特别行政区
 
-    pc.getProvinceName('data.json');
+    china.getProvinceName('data.json');
 
 #### getCityNameByProvince(path,index)
 get city name by province index from saved data file,this is province map:
 
 从数据文件中获取具体的某个省、市、直辖市、特别行政区的市或县，通过如下编号获取：
 
-    pc.getCityNameByProvince('data.json',1)               // get "shanghai's city"
+    china.getCityNameByProvince('data.json',1)               // get "shanghai's city"
 
 
     ['上海市','云南省','内蒙古','北京市','台湾省', 
