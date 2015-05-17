@@ -1,7 +1,7 @@
 # cn-province-city
 Geting and formatting chinese provinces and cities
 
-## 一个小功能，用来获取中国的省和市
+## 小模块，用来获取中国的省和市
 
 
 ## Installation
@@ -28,8 +28,16 @@ or
 or
 
     node your-script.js --save data-file-path
-    
-在你的脚本文件中引入模块后，使用此命令执行你的脚本文件，创建数据文件，数据文件名、路径自定义
+
+example :
+
+	node index.js -s data/data.txt
+
+or 
+
+	node index.js -s data.json
+
+在你的脚本文件中引入模块后，请立刻使用此命令执行你的脚本文件，创建数据文件，数据文件名、路径自定义
 
 ## Methonds
 
@@ -53,14 +61,14 @@ get province name from saved data file
 
 从数据文件中获取中国的34个省、市、直辖市、特别行政区
 
-    china.getProvinceName('data.json');
+    china.getProvince('data.json');
 
 #### getCity(path,index)
 get city name by province index from saved data file,this is province map:
 
 从数据文件中获取具体的某个省、市、直辖市、特别行政区的市或县，通过如下编号获取：
 
-    china.getCityNameByProvince('data.json',1)               // get "shanghai's city"
+    china.getCity('data.json',1)               // get "shanghai's city"
 
 
     ['上海市','云南省','内蒙古','北京市','台湾省', 
