@@ -26,33 +26,40 @@ Geting and formatting chinese provinces and cities
 ####save(path[,hint])
 specific the file saved path,choose if you don't need hint 
 
-        pc.save('./data.json');
+    pc.save('./data.json');
 or
 
-        pc.save('./data.json',false);
+    pc.save('./data.json',false);
 
 **please execute the save method first~**
 
 ####getAll(path)
 get all data from saved data file
 
-        pc.getAll('data.json');
+    pc.getAll('data.json');
 
 ####getProvinceName(path)
 get province name from saved data file
 
-        pc.getProvinceName('data.json');
+    pc.getProvinceName('data.json');
 
 ####getCityNameByProvince(path,index)
 get city name by province index from saved data file,this is province map:
 
-        pc.getCityNameByProvince('data.json',1)               // get "shanghai's city"
+    pc.getCityNameByProvince('data.json',1)               // get "shanghai's city"
 
 
-    ['上海市','云南省','内蒙古','北京市','台湾省',            // 1  - 5
-    '吉林省','四川省','天津市','宁夏','安徽省',               // 6  - 10
-    '山东省','山西省','广东省','广西','新疆',                 // 11 - 15
-    '江苏省','江西省','河北省','河南省','浙江省',             // 16 - 20
-    '海南省','湖北省','湖南省','澳门特别行政区','甘肃省',     // 21 - 25
-    '福建省','西藏','贵州省','辽宁省','重庆市',               // 26 - 30
-    '陕西省','青海省','香港特别行政区','黑龙江省' ]           // 31 - 24   
+    ['上海市','云南省','内蒙古','北京市','台湾省', 
+    //  1        2       3        4       5
+     '吉林省','四川省','天津市','宁夏','安徽省',
+     // 6        7       8       9       10
+     '山东省','山西省','广东省','广西','新疆',     
+     // 11       12      13     14     15
+     '江苏省','江西省','河北省','河南省','浙江省',
+     // 16      17       18      19       20 
+     '海南省','湖北省','湖南省','澳门特别行政区','甘肃省', 
+     // 21      22       23          24          25
+     '福建省','西藏','贵州省','辽宁省','重庆市',             
+     // 26     27     28       29       30
+     '陕西省','青海省','香港特别行政区','黑龙江省' ] 
+     // 31      32          33           34
