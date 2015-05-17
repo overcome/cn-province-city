@@ -14,6 +14,7 @@ var map =['上海市','云南省','内蒙古','北京市','吉林省','四川省
 		  '浙江省','海南省','湖北省','湖南省','甘肃省','福建省','西藏','贵州省','辽宁省',
 		  '重庆市','陕西省','青海省','黑龙江省' ]; 
 
+var cache = [];
 /**
  * fetch data from webpage
  * @return {result} [result data]
@@ -89,29 +90,69 @@ module.exports.getAll = function(path){
 
 /**
  * get province name
+ * @param  {String} path [file path]
  * @return {Array} [array of privince name]
  */
-module.exports.getProvinceName = function(){
-	return map;
+module.exports.getProvinceName = function(path){
+
+	if(cache && cache.length){    				// cached province name
+		return cache;
+	}else{										// no cached province name
+		var data = JSON.parse(fse.readJsonSync(path));
+		var result = [];
+
+		if(result){
+			for(var i = 0;i<data.length-1;i++){
+				if(data[i].province !== data[i+1].province){
+					result.push(data[i+1].province);
+				}
+			}
+		}else{
+			result.push(data[0].province);
+		}
+		cache = result.sort();
+		return cache;
+	}
+	
 }
 
 /**
  * get city name by province number
  * @param  {String} path     [file path]
- * @param  {Number} province [number of province in map]
+ * @param  {Number} number [number of province in map]
  * @return {Array}           [array of city]
  */
-module.exports.getCityNameByProvince = function(path,province){
+module.exports.getCityNameByProvince = function(path,number){
 	
-	var result = [];
 	var data = JSON.parse(fse.readJsonSync(path));
-
-	for(var i = 0;i<data.length;i++){
-		if(data[i].province == map[province]){
-			result.push(data[i].city);		
+	var result = [];
+	
+	if(cache && cache.length){                  // cached province name
+		for(var i = 0;i<data.length;i++){
+			if(data[i].province == cache[number]){
+				result.push(data[i].city);		
+			}
 		}
+		return result;
+	}else{         								// no cached province name
+		if(result){
+			for(var i = 0;i<data.length-1;i++){
+				if(data[i].province !== data[i+1].province){
+					result.push(data[i+1].province);
+				}
+			}
+		}else{
+			result.push(data[0].province);
+		}
+		cache = result.sort();
+		result = [];
+		for(var i = 0;i<data.length;i++){
+			if(data[i].province == cache[number]){
+				result.push(data[i].city);		
+			}
+		}
+		return result;
 	}
-	return result;
 }
 
 
