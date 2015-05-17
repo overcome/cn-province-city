@@ -1,6 +1,6 @@
 {
   "name": "provincecityinchina",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "getting and formatting chinese provinces and cities ",
   "main": "index.js",
   "scripts": {

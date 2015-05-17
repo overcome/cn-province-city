@@ -13,21 +13,29 @@ Geting and formatting chinese provinces and cities
 
     var china = require('provincecityinchina');
  
+## Help
+
+	node your-script.js -h
+
+or
+	
+	node your-script.js --help
+
 ## Config
 
-    node your-script.js -s data-file-path.json
+    node your-script.js -s data-file-path
     
 or
 
-    node your-script.js --save data-file-path.js
+    node your-script.js --save data-file-path
     
-在你的脚本文件中引入模块后，使用此命令执行你的脚本文件，创建数据文件，数据文件自定义名字，以.json后缀结尾
+在你的脚本文件中引入模块后，使用此命令执行你的脚本文件，创建数据文件，数据文件名、路径自定义
 
 ## Methonds
 
  - getAll
- - getProvinceName
- - getCityNameByProvince
+ - getProvince
+ - getCity
     
 
 ## Specific
@@ -40,14 +48,14 @@ get all data from saved data file
 
     china.getAll('data.json');
 
-#### getProvinceName(path)
+#### getProvince(path)
 get province name from saved data file
 
 从数据文件中获取中国的34个省、市、直辖市、特别行政区
 
     china.getProvinceName('data.json');
 
-#### getCityNameByProvince(path,index)
+#### getCity(path,index)
 get city name by province index from saved data file,this is province map:
 
 从数据文件中获取具体的某个省、市、直辖市、特别行政区的市或县，通过如下编号获取：

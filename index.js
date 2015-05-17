@@ -1,16 +1,26 @@
+
 'use strict';
 
 var Q = require('q');
 var superagent = require('superagent');
 var cheerio = require('cheerio');
 var fse = require('fs-extra');
+var pkg = require('./package.json');
 
-
-if(process.argv[2] == '-s' || '--save'){
+if(process.argv[2] === '-s' || process.argv[2] === '--save'){
 	save(process.argv[3]);
 }
 
-
+if(process.argv[2] === '-h' || process.argv[2] === '--help'){
+	console.log(' ')
+	console.log('  version : ',pkg.version);
+	console.log(' ');
+	console.log('  command : ');
+	console.log(' ');
+	console.log('	-s , --save [path]','	save data into file');
+	console.log('	-h , --help       ','	ask for help');
+	console.log(' ')
+}
 /**
  * cache of provinces name
  * @type {Array}
@@ -121,11 +131,11 @@ module.exports.getAll = function(path){
  * @param  {String} path [file path]
  * @return {Array} [array of privince name]
  */
-module.exports.getProvinceName = function(path){
+module.exports.getProvince = function(path){
 
-	if(cache && cache.length){    				// cached province name
+	if(cache && cache.length){    				
 		return cache;
-	}else{										// no cached province name
+	}else{										
 		var data = JSON.parse(fse.readJsonSync(path));
 		cache.push(data[0].province);
 
@@ -143,22 +153,22 @@ module.exports.getProvinceName = function(path){
 /**
  * get city name by province number
  * @param  {String} path     [file path]
- * @param  {Number} number [number of province in map]
+ * @param  {Number} number   [number of province in map]
  * @return {Array}           [array of city]
  */
-module.exports.getCityNameByProvince = function(path,index){
+module.exports.getCity = function(path,index){
 	
 	var data = JSON.parse(fse.readJsonSync(path));
 	var result = [];
 	var index = index - 1;
-	if(cache && cache.length){                  // cached province name
+	if(cache && cache.length){                  
 		for(var i = 0;i<data.length;i++){
 			if(data[i].province == cache[index]){
 				result.push(data[i].city);		
 			}
 		}
 		return result;
-	}else{         								// no cached province name
+	}else{         								
 		if(result){
 			for(var i = 0;i<data.length-1;i++){
 				if(data[i].province !== data[i+1].province){
